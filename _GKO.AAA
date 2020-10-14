@@ -1,0 +1,8 @@
+SYSTEM nt
+OPTION quiet
+FILE {
+ 'KEY.obj'
+ 'KEY.exe'
+ NUL
+}
+OPTION stack=1M

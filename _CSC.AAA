@@ -1,0 +1,8 @@
+SYSTEM nt
+OPTION quiet
+FILE {
+ 'memory.obj'
+ 'memory.exe'
+ NUL
+}
+OPTION stack=1M

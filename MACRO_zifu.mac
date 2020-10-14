@@ -1,0 +1,45 @@
+
+;*************字符串显示宏 *************
+;           入口形式参数text
+;使用说明：必须将其放在所使位置之前，
+;          将所显示的字符串放入哑元text      
+;***************************************    
+      msg macro  text
+      push ax
+      push dx
+      push ds	
+	  
+      MOV AH, 9                  ;AH=9,调用显示字符串功能
+	  
+	  MOV DX,SEG text            ;将要显示的字符串的段地址赋值给DX
+      MOV DS,DX                  ;使DS得到要显示的字符串段地址
+      MOV DX,OFFSET text         ;得到DX得到MESG偏移地址
+      INT 21H                    ;调用dos显示功能
+      pop ds
+	  pop dx
+	  pop ax 
+	   endM  
+
+
+      key_status macro  text1,text2 
+      push ax
+      push dx
+      push ds	
+	  
+      MOV AH, 9                  ;AH=9,调用显示字符串功能
+	  
+	  MOV DX,SEG text1            ;将要显示的字符串的段地址赋值给DX
+      MOV DS,DX                  ;使DS得到要显示的字符串段地址
+      MOV DX,OFFSET text1         ;得到DX得到MESG偏移地址
+      INT 21H                    ;调用dos显示功能
+      
+      MOV AH, 9                  ;AH=9,调用显示字符串功能
+	  
+	  MOV DX,SEG text2            ;将要显示的字符串的段地址赋值给DX
+      MOV DS,DX                  ;使DS得到要显示的字符串段地址
+      MOV DX,OFFSET text2         ;得到DX得到MESG偏移地址
+      INT 21H                    ;调用dos显示功能
+      pop ds
+	  pop dx
+	  pop ax 
+	   endM         
